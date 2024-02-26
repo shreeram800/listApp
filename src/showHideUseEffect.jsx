@@ -18,4 +18,6 @@ export function SomeThing(){
         <br></br>
          My name is {name} and my age is {age}
     </div>
-}
+} 
+
+export default App;
