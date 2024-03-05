@@ -5,7 +5,8 @@ function Todo(){
 
     const [newTodoName, setNewTodoName] = useState("");
     const [todos,setTodo]=useState([]);
-    function addNewTodo(){
+    function addNewTodo(e){
+        e.preventDefault();  
         if(newTodoName===""){
             return
         }
@@ -28,9 +29,9 @@ function Todo(){
         })
     }
     function deleteTodo(todoId){
-        setTodo(current=>current.filter(e=>{
+        setTodo(current=>current.filter(e=>
             e.id!==todoId
-        }))
+        ))
     }
     return <>
     <ul id="list">
@@ -44,13 +45,14 @@ function Todo(){
             <button data-button-delete onClick={e=>deleteTodo(todo.id)}>Delete</button>
           </li>)
         })}
-      
     </ul>
-    <div id="new-todo-form">
+
+    
+    <form id="new-todo-form" onSubmit={addNewTodo}> 
     <label htmlFor="todo-input">New Todo</label>
     <input type="text" id="todo-input" value={newTodoName} onChange={e=>setNewTodoName(e.target.value)}/>
     <button onClick={addNewTodo}>Add Todo</button>
-  </div>
+  </form>
   </>
 }
 

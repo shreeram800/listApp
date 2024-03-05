@@ -1,9 +1,11 @@
 import { useMemo, useState } from "react"
 
 const LIST=Array(1_000_000).fill().map((_,i)=>i+1)
+
 //useMemo have to be used on large data sets to improve performance
 //here when ever query changes it runs the UseMemo and store the new value
 //else print same value as stored from last useMemo run.
+
 function App(){
 
     const [query,setQuery]= useState("");
@@ -13,12 +15,11 @@ function App(){
         return LIST.filter(n=>n.toString().includes(query))
     },[query])
     console.log(filteredList.length);
-
     return (
         <div style={
             {
                 background: isDarkMode? "#333": "white",
-                color: isDarkMode? "white": "#333",
+                color: isDarkMode? "white": "#333"
             }
         }
         >
