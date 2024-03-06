@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { emailCheck, passwordCheck } from "./ErrorCheck";
 
 export function StateForm(){
@@ -12,7 +12,9 @@ export function StateForm(){
   const emailResult=emailCheck(email);
   const passwordResult=passwordCheck(password);
   
-  
+  useEffect(()=>{
+    console.log("Render");
+  })
   function onSubmit(e){
     e.preventDefault()
     setEmailError(emailResult)
